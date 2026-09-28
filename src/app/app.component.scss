@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    max-width: 800px;
+    margin: 0 auto;
+    padding:  20px;
+}
+
+.card {
+    padding: 16px;
+    border: 2px solid #4B75FF;
+    border-radius: 8px;
+    background-color: #ADEEC5;
+}
+
+aside {
+    padding: 16px;
+    border-left: 4px solid #4B75FF;
+    background-color: #FFA213;
+}
+
