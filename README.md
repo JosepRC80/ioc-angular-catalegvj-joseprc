@@ -44,3 +44,83 @@ EAC1 completada: projecte Angular configurat, estructura inicial creada, reposit
 ## Enllaç del repositori
 
     https://github.com/JosepRC80/ioc-angular-catalegvj-joseprc.git
+
+
+            
+            
+            ########################################################################################################################
+
+
+### Comprovació del codi TypeScript
+
+```bash
+npx tsc --noEmit -p tsconfig.app.json
+```
+
+Aquesta comanda executa el compilador de TypeScript
+per comprovar si hi ha errors de tipatge, sense generar
+fitxers JavaScript nous.
+
+- `npx`: executa el compilador instal·lat al projecte.
+- `tsc`: compilador de TypeScript.
+- `--noEmit`: evita generar fitxers de sortida.
+- `-p`: indica el fitxer de configuració que s'utilitzarà.
+
+
+
+###################################################### Exercici 2 - Components i comunicació #############################################################
+
+Creació del component de llista amb Angular CLI:
+
+```bash
+ng generate component components/llista-videojocs --standalone
+```
+
+Aquest component serà responsable de mostrar el conjunt
+de videojocs del catàleg mitjançant components de targeta.
+
+
+
+### Component TargetaVideojoc
+
+Comanda de creació:
+
+```bash
+ng generate component components/targeta-videojoc --standalone
+```
+
+Aquest component mostrarà les dades individuals d'un
+videojoc i rebrà la informació del component de llista
+mitjançant @Input.
+
+
+
+### Component EtiquetaCategoria
+
+Comanda de creació:
+
+```bash
+ng generate component components/etiqueta-categoria --standalone
+```
+
+Subcomponent reutilitzable que mostra la categoria
+d'un videojoc. Rebrà aquesta informació des del
+component TargetaVideojoc mitjançant @Input.
+
+
+
+
+### Component FiltresVideojocs
+
+Comanda de creació:
+
+```bash
+ng generate component components/filtres-videojocs --standalone
+```
+
+Aquest component permetrà cercar videojocs pel títol
+i filtrar-los per categoria.
+
+La comunicació amb el component principal es farà
+mitjançant @Output, que notificarà els criteris
+de cerca seleccionats per l'usuari.

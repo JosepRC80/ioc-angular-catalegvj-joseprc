@@ -12,4 +12,22 @@
   <aside>
     <p>El catàleg inclou videojocs de totes les plataformes, així com captures de pantalla i petites descripcions.</p>
   </aside>
+
+  <!-- Component de filtres del catàleg-->
+  <app-filtres-videojocs></app-filtres-videojocs>
+
+  <!-- Component de llista: rep els videojocs i comunica la selecció al pare-->
+  <div class="jocs">
+    <app-llista-videojocs
+      [videojocs]="elements"
+      (seleccionarVideojoc)="seleccionarVideojoc($event)">
+    </app-llista-videojocs>
+  </div>
+
+  <!-- Mostrem el videojoc seleccionat -->
+  @if (videojocSeleccionat) {
+    <p>Videojoc seleccionat: {{ videojocSeleccionat.titol }}</p>
+  }
+
+  
 </main>

@@ -1,0 +1,26 @@
+
+<!-- Component que mostra les dades individuals d'un videojoc -->
+
+<article class="targeta-videojoc">
+
+    <h3>{{ videojoc.titol }}</h3>
+    
+    <p>{{ videojoc.descripcio }}</p>
+    
+    
+    <!-- Mostrem la categoria amb el subcomponent EtiquetaCategoria -->
+    <p>Categoria:
+        <app-etiqueta-categoria [categoria]="videojoc.categoria"></app-etiqueta-categoria>
+    </p>
+
+    
+    <p>Plataforma: {{ videojoc.plataforma }}</p>
+    
+    <p>Valoració: {{ videojoc.valoracio }}/10</p>
+
+    <!-- botó que permet seleccionar un videojoc -->
+    <button class="boto-seleccionar" type="button" (click)="seleccionarVideojoc()">
+        Seleccionar
+    </button>
+
+</article>
