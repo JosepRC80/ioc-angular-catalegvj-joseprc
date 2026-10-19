@@ -1,0 +1,139 @@
+
+import { Element } from '../models/element.model'; /* importem la interfície que he creat */
+
+/**
+ * Mock: Un mock és un conjunt de dades simulades que utilitzem per desenvolupar i provar una aplicació sense necessitar una base de dades real.
+ *  
+ * Dades simulades del catàleg.
+ * Permeten provar l'aplicació sense connectar-la
+ * a una base de dades externa.
+ * 
+ * 
+ *
+    ### Comprovació del codi TypeScript
+
+            npx tsc --noEmit -p tsconfig.app.json
+    
+
+    Aquesta comanda executa el compilador de TypeScript
+    per comprovar si hi ha errors de tipatge, sense generar
+    fitxers JavaScript nous.
+
+    - `npx`: executa el compilador instal·lat al projecte.
+    - `tsc`: compilador de TypeScript.
+    - `--noEmit`: evita generar fitxers de sortida.
+    - `-p`: indica el fitxer de configuració que s'utilitzarà.
+
+ */
+export const ELEMENTS_MOCK: Element[] = [ /*declaro una constant que podré utilitzar des d'altres fitxers. Element[] indica que és un array
+    i { ... } representa un objecte amb les propietats definides a la interfície */
+    {
+        id: 1,
+        titol: 'Super Mario Bros',
+        descripcio: 'Joc de plataformes on Mario ha de rescatar a la princesa Peach.',
+        categoria: 'Plataformes',
+        plataforma: 'NES',
+        dataLlancament: '1985-09-13',
+        valoracio: 9.5,
+        destacat: true
+    },
+
+    {
+        id: 2,
+        titol: 'Super Mario World',
+        descripcio: 'Joc de plataformes on Mario explora Dinosaur Land amb Yoshi.',
+        categoria: 'Plataformes',
+        plataforma: 'SNES',
+        dataLlancament: '1990-11-21',
+        valoracio: 9.7,
+        destacat: true
+    },
+
+    {
+        id: 3,
+        titol: 'Tetris',
+        descripcio: 'Joc de puzles que consisteix a encaixar peces per completar línies.',
+        categoria: 'Puzles',
+        plataforma: 'Game Boy',
+        dataLlancament: '1989-06-14',
+        valoracio: 9.8,
+        destacat: true
+    },
+
+    {
+        id: 4,
+        titol: 'Sonic the Hedgehog',
+        descripcio: 'Joc de plataformes protagonitzat per un eriçó blau que ha de derrotar el Dr. Robotnik.',
+        categoria: 'Plataformes',
+        plataforma: 'Mega Drive',
+        dataLlancament: '1991-06-23',
+        valoracio: 9.2,
+        destacat: false
+    },
+
+    {
+        id: 5,
+        titol: 'Alex Kidd in Miracle World',
+        descripcio: 'Joc de plataformes on Alex Kidd recorre diversos escenaris i s’enfronta a enemics amb els seus punys.',
+        categoria: 'Plataformes',
+        plataforma: 'Master System II',
+        dataLlancament: '1986-11-01',
+        valoracio: 8.8,
+        destacat: true
+    },
+
+    {
+        id: 6,
+        titol: 'The Legend of Zelda: Breath of the Wild',
+        descripcio: 'Joc d’aventures i exploració en un món obert on Link ha de salvar el regne de Hyrule.',
+        categoria: 'Aventura',
+        plataforma: 'Nintendo Switch',
+        dataLlancament: '2017-03-03',
+        valoracio: 9.8,
+        destacat: true
+    },
+
+    {
+        id: 7,
+        titol: 'Mario Kart World',
+        descripcio: 'Joc de curses amb personatges de Nintendo, circuits connectats i exploració lliure.',
+        categoria: 'Curses',
+        plataforma: 'Nintendo Switch 2',
+        dataLlancament: '2025-06-05',
+        valoracio: 9.3,
+        destacat: true
+    },
+
+    {
+        id: 8,
+        titol: 'The Secret of Monkey Island',
+        descripcio: 'Aventura gràfica protagonitzada per Guybrush Threepwood, un jove que somia convertir-se en pirata.',
+        categoria: 'Aventura gràfica',
+        plataforma: 'Amiga 500',
+        dataLlancament: '1991-01-01',
+        valoracio: 9.6,
+        destacat: true
+    },
+
+    {
+        id: 9,
+        titol: 'Saboteur II: Avenging Angel',
+        descripcio: 'Joc d’acció i infiltració protagonitzat per una ninja que ha de completar una missió en una base enemiga.',
+        categoria: 'Acció',
+        plataforma: 'ZX Spectrum',
+        dataLlancament: '1987-01-01',
+        valoracio: 9.0,
+        destacat: true
+    },
+
+    {
+        id: 10,
+        titol: 'The Legend of Zelda: A Link to the Past',
+        descripcio: 'Joc d’aventures on Link explora Hyrule i el Món Fosc per rescatar la princesa Zelda.',
+        categoria: 'Aventura',
+        plataforma: 'SNES',
+        dataLlancament: '1991-11-21',
+        valoracio: 9.9,
+        destacat: true
+    },
+];
