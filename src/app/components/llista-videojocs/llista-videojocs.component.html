@@ -4,13 +4,22 @@
 <section aria-label="Llistat de videojocs">
     <h2>Catàleg de videojocs</h2>
 
-    <!-- Recorrem l'array rebut del component pare -->
-    @for (videojoc of videojocs; track videojoc.id) {
+    <!-- comptador de videojocs que compleixen els filtres-->
+    <p aria-live="polite">Resultats trobats: {{ videojocs.length }}</p>
 
-        <!-- Rebem l'esdeveniment de selecció emès per la targeta-->
-        <app-targeta-videojoc
-            [videojoc]="videojoc"
-            (seleccionar)="notificarSeleccio($event)">
-        </app-targeta-videojoc>
+    <!-- Recorrem l'array rebut del component pare -->
+    @if (videojocs.length > 0) {
+        @for (videojoc of videojocs; track videojoc.id) {
+
+            <!-- Rebem l'esdeveniment de selecció emès per la targeta-->
+            <app-targeta-videojoc
+                [videojoc]="videojoc"
+                (seleccionar)="notificarSeleccio($event)">
+            </app-targeta-videojoc>
+        }
+    } @else {
+        <!-- si la llista està buida es mostra el missatge -->
+        <p role="status">No s'han trobat videojocs que coincideixin amb els filtres.</p>
     }
+
 </section>

@@ -26,10 +26,32 @@
     </app-llista-videojocs>
   </div>
 
-  <!-- Mostrem el videojoc seleccionat -->
-  @if (videojocSeleccionat) {
-    <p>Videojoc seleccionat: {{ videojocSeleccionat.titol }}</p>
-  }
+
+  <!-- panell de detall del videojoc seleccionat -->
+  <section class="detall-videojoc" aria-labelledby="titol-detall">
+
+    <h2 id="titol-detall">Detall del videojoc</h2>
+    
+    <!-- Mostrem el videojoc seleccionat -->
+    @if (videojocSeleccionat) {
+
+      <h3>{{ videojocSeleccionat.titol }}</h3>
+
+      <p>Descripcio: {{ videojocSeleccionat.descripcio }}</p>
+
+      <p>Categoria: {{ videojocSeleccionat.categoria }}</p>
+
+      <p>Plataforma: {{ videojocSeleccionat.plataforma }}</p>
+
+      <p>Data de llançament: {{ videojocSeleccionat.dataLlancament | date: 'dd/MM/yyyy' }}</p>
+
+      <p>Valoració: {{ videojocSeleccionat.valoracio }}</p>
+
+    } @else {
+      <!-- Missatge inicial quan encara no s'ha seleccionat cap joc-->
+      <p>Selecciona un videojoc del catàleg per consultar-ne els detalls.</p>
+    }
+  </section>
 
   
 </main>

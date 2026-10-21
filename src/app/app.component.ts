@@ -7,12 +7,16 @@ import { Element } from './models/element.model'; // importem el model per tipar
 
 import { FiltresVideojocs, type CriterisFiltre } from './components/filtres-videojocs/filtres-videojocs.component'; // component i tipus dels filtres
 
+import { DatePipe } from '@angular/common'; // permet formatar dates a la plantilla html
+
+
 @Component({
-  imports: [LlistaVideojocs, FiltresVideojocs], // components disponibles a la plantilla HTML
-  selector: 'app-root',
-  styleUrl: './app.component.scss',
-  templateUrl: './app.component.html',
+  imports: [LlistaVideojocs, FiltresVideojocs, DatePipe], // components disponibles a la plantilla HTML
+  selector: 'app-root', // Selector del component principal
+  styleUrl: './app.component.scss', // Fitxer d'estils
+  templateUrl: './app.component.html', // Plantilla HTML
 })
+
 export class App {
   public elements = ELEMENTS_MOCK; // conté els 10 videojocs que enviarem al component fill
   public elementsFiltrats: Element[] = [...ELEMENTS_MOCK]; // llista de jocs que mostrarem després d'aplicar els filtres. **[...ELEMENTS_MOK] crea un nou array amb els mateixos videojocs que tenim a ELEMENTS_MOCK**
@@ -21,16 +25,18 @@ export class App {
 
   public videojocSeleccionat: Element | null = null; // inicialemnt no hi ha cap videojoc seleccionat
 
-  
+
   seleccionarVideojoc(videojoc: Element): void {
     this.videojocSeleccionat = videojoc; // Guardem el videojoc seleccionat
   }
 
   // rep els criteris enviats pel component FiltresVideojocs
   rebreFiltres(criteris: CriterisFiltre): void {
-    
+
     // preparem el text per comparar-lo sense distinguir majúscules i minúscules
     const text = criteris.text.trim().toLowerCase();
+
+    this.videojocSeleccionat = null; // eliminem la selecció anterior en aplicar nous filtres!!!!!!!
 
     // recorrem la llista original i conservem els jocs que compleixen les condicions
     this.elementsFiltrats = this.elements.filter(videojoc => {

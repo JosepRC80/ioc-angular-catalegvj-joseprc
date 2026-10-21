@@ -151,3 +151,69 @@ i categoria.
 - src/app/components/filtres-videojocs/filtres-videojocs.component.scss
 - src/app/app.component.ts
 - src/app/app.component.html
+
+
+############################## EAC 2 - Exercici 4 - Control de flux, estats, pipe i detall ###########################################################
+
+
+En aquest exercici s'ha actualitzat el catàleg de videojocs
+per gestionar el llistat, els resultats de cerca i el detall
+del videojoc seleccionat amb la sintaxi d'Angular 22.
+
+### Funcionalitats implementades
+
+- Ús de @for amb track videojoc.id per recórrer el catàleg.
+- Ús de @if i @else per mostrar contingut condicional.
+- Comptador de resultats mitjançant videojocs.length.
+- Missatge informatiu quan no es troben videojocs.
+- Panell de detall del videojoc seleccionat.
+- Data de llançament formatada amb DatePipe.
+- Restabliment de la selecció anterior quan s'apliquen nous filtres.
+
+### Control de flux del llistat
+
+El component LlistaVideojocs rep els videojocs filtrats
+mitjançant @Input().
+
+Si hi ha resultats, utilitza @for per mostrar les targetes.
+
+Si no hi ha resultats, utilitza @else per mostrar el missatge:
+
+"No s'han trobat videojocs que coincideixin amb els filtres."
+
+El comptador s'actualitza automàticament segons el nombre
+de videojocs que rep el component.
+
+### Panell de detall
+
+Quan l'usuari prem el botó "Seleccionar", el component App
+guarda el videojoc seleccionat i en mostra la informació:
+
+- Títol.
+- Descripció.
+- Categoria.
+- Plataforma.
+- Valoració.
+- Data de llançament.
+
+Quan no hi ha cap videojoc seleccionat, es mostra un missatge
+indicant que cal seleccionar-ne un.
+
+En aplicar filtres nous, es neteja la selecció anterior
+per evitar mostrar informació d'un videojoc que ja no
+apareix al llistat.
+
+### Format de la data
+
+S'utilitza DatePipe d'Angular per mostrar el camp
+dataLlancament amb el format dd/MM/yyyy.
+
+Exemple:
+
+1985-09-13 -> 13/09/1985
+
+### Fitxers modificats
+
+- src/app/app.component.ts
+- src/app/app.component.html
+- src/app/components/llista-videojocs/llista-videojocs.component.html
