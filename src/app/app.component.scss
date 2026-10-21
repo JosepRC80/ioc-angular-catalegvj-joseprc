@@ -20,3 +20,34 @@ aside {
     border-left: 4px solid #4B75FF;
     background-color: #FFA213;
 }
+
+
+// enllaç d'accessibilitat ocult fora de la pantalla
+.enllac-salt {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1000;
+    padding: 12px 16px;
+    background: #ffffff;
+    color: #111111;
+    border: 2px solid #2563eb;
+}
+
+// quan rep el focus l'enllaç apareix a la pantalla
+.enllac-salt:focus {
+    left: 12px;
+    top: 12px;
+}
+
+
+// Indicador de focus per als elements interactius de l'aplicació
+:host {
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+        outline: 3px solid #2563eb; // Contorn blau visible
+        outline-offset: 3px; // Separem el contorn de l'element
+    }
+}

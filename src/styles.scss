@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+// Focus visible global per millorar la navegació amb teclat
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #2563eb; // Contorn blau
+    outline-offset: 3px; // Separació respecte de l'element
+}

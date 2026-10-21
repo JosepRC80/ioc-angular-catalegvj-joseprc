@@ -217,3 +217,82 @@ Exemple:
 - src/app/app.component.ts
 - src/app/app.component.html
 - src/app/components/llista-videojocs/llista-videojocs.component.html
+
+
+
+
+############################## EAC 2 - Exercici  - Accessibilitat, responsive i lliurament ###########################################################
+
+
+En aquest exercici s'ha millorat l'accessibilitat i
+l'adaptació a diferents mides de pantalla del catàleg
+de videojocs desenvolupat amb Angular 22.
+
+### Accessibilitat
+
+- S'ha afegit un enllaç "Salta al contingut principal".
+- L'enllaç apunta a l'element main amb l'identificador
+  contingut-principal.
+- S'ha incorporat tabindex="-1" al contingut principal.
+- S'ha utilitzat :focus-visible per destacar els elements
+  interactius durant la navegació amb teclat.
+- Els camps del formulari disposen d'etiquetes label
+  associades mitjançant els atributs for i id.
+- El comptador de resultats utilitza aria-live="polite".
+- El missatge sense resultats utilitza role="status".
+- El missatge d'error de validació utilitza role="alert".
+
+### Disseny responsive
+
+El formulari utilitza CSS Grid per distribuir els camps
+de cerca, el selector de categoria i els botons.
+
+També utilitza Flexbox per organitzar les etiquetes i els
+controls dins de cada grup.
+
+En pantalles de més de 600 píxels, el formulari es
+distribueix en dues columnes.
+
+En pantalles de 600 píxels o menys, s'utilitza:
+
+    @media (max-width: 600px)
+
+Aquesta regla adapta el formulari a una sola columna.
+
+S'ha comprovat el comportament en diferents resolucions,
+incloent-hi 393 x 852, 412 x 922 i 1280 x 800 píxels.
+
+### Fitxers principals
+
+- src/app/app.component.html
+- src/app/app.component.scss
+- src/styles.scss
+- src/app/components/filtres-videojocs/filtres-videojocs.component.html
+- src/app/components/filtres-videojocs/filtres-videojocs.component.scss
+- src/app/components/llista-videojocs/llista-videojocs.component.html
+
+### Branca de desenvolupament
+
+Els exercicis de l'EAC2 es desenvolupen a la branca:
+
+    ra2-components
+
+
+### Versions de l'entorn de desenvolupament
+
+El projecte s'ha desenvolupat amb les eines següents:
+
+| Eina             | Versió |
+
+| Angular          | 22.2.0 |
+| Angular CLI      | 22.2.0 |
+| Node.js          | 24.21.0 |
+| npm              | 11.19.0 |
+| TypeScript       | 6.0.3 |
+| Sistema operatiu | Windows x64 |
+
+Les versions s'han comprovat mitjançant la comanda:
+
+```bash
+ng version
+```
