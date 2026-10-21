@@ -1,0 +1,57 @@
+// espai reservat per els misatges de validació
+.espai-error {
+    min-height: 24px; // manté l'espai encara que no es mostri cap error
+}
+
+// aspecte dels missatges de validació
+.missatge-error {
+    color: #b91c1c;
+    margin: 0; // evita marges addicionals que moguin el formulari
+}
+
+.formulari-filtres {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 24px;
+    max-width: 700px;
+}
+
+select {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 8px;
+}
+
+// els botons ocupen una columna cadascun
+.boto-aplicar, .boto-restablir {
+    width: 100%;
+    padding: 9px;
+    cursor: pointer;
+}
+
+
+/* Organitzem cada etiqueta i el seu camp verticalment */
+.grup-cerca,
+.grup-categoria {
+    display: flex; // Activem Flexbox dins de cada grup
+    flex-direction: column; // Etiqueta a dalt, camp a sota
+    gap: 6px; // Separació entre etiqueta i camp
+    min-width: 0; // Evitem que els camps desbordin la columna
+}
+
+/* Fem que el camp de cerca ocupi tota la seva columna */
+.grup-cerca input {
+    box-sizing: border-box; // Inclou el padding dins de l'amplada
+    width: 100%; // Ocupa l'amplada disponible
+    min-width: 0; // Permet adaptar-se a pantalles estretes
+    padding: 8px; // Espai interior
+}
+
+
+// quan la pantalla és estreta, mostrem una sola columna
+@media (max-width: 600px) {
+    .formulari-filtres {
+        grid-template-columns: 1fr;
+    }
+}

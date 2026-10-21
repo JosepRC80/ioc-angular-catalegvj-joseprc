@@ -1,12 +1,67 @@
 
-<!-- Component de filtres del catàleg de videojocs -->
+<!-- Formulari per cercar i filtrar els videojocs -->
+<form class="formulari-filtres">
 
-<section class="filtres-videojocs" aria-labelledby="titol-filtres">
+    <!-- Grup de cerca: etiqueta, camp i validació -->
+    <div class="grup-cerca">
 
-    <h2 id="titol-filtres">Filtres del catàleg</h2>
+        <label for="textCerca">Cerca un videojoc:</label>
 
-    <!-- El formulari de cerca i les validacions
-        s'implementaran a l'Exercici 3. -->
-    <p>Pròximament podràs cercar videojocs per títol i categoria.</p>
+        <input
+            type="text"
+            id="textCerca"
+            name="textCerca"
+            [(ngModel)]="textCerca"
+            placeholder="Escriu el nom d'un videojoc"
+            required
+            minlength="3"
+            #campCerca="ngModel">
 
-</section>
+        <!-- Reservem espai per al missatge de validació -->
+        <div class="espai-error">
+            @if (campCerca.errors?.['minlength'] && campCerca.dirty) {
+                <p class="missatge-error" role="alert">
+                    El text de cerca ha de tenir un mínim de 3 caràcters.
+                </p>
+            }
+        </div>
+
+    </div>
+
+    <!-- Grup de categoria: etiqueta i selector -->
+    <div class="grup-categoria">
+
+        <label for="categoria">Categoria:</label>
+
+        <select
+            id="categoria"
+            name="categoria"
+            [(ngModel)]="categoriaSeleccionada">
+
+            <option value="">Totes les categories</option>
+            <option value="Plataformes">Plataformes</option>
+            <option value="Aventura">Aventura</option>
+            <option value="Puzles">Puzles</option>
+
+        </select>
+
+    </div>
+
+    <!-- Botó per aplicar els filtres -->
+    <button
+        type="button"
+        class="boto-aplicar"
+        (click)="enviarFiltres()"
+        [disabled]="campCerca.invalid">
+        Aplicar filtres
+    </button>
+
+    <!-- Botó per restablir els filtres -->
+    <button
+        type="button"
+        class="boto-restablir"
+        (click)="restablirFiltres()">
+        Restablir filtres
+    </button>
+
+</form>

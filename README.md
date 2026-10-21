@@ -124,3 +124,30 @@ i filtrar-los per categoria.
 La comunicació amb el component principal es farà
 mitjançant @Output, que notificarà els criteris
 de cerca seleccionats per l'usuari.
+
+
+
+
+
+##################################################### EAC2 - Exercici 3: Formulari de filtres ###########################################################
+
+S'ha implementat un formulari per cercar videojocs per títol
+i categoria.
+
+### Funcionalitats implementades
+
+- Formulari Angular amb FormsModule i [(ngModel)].
+- Cerca combinada per text i categoria.
+- Validacions required i minlength="3".
+- Botó "Aplicar filtres" deshabilitat quan el camp és invàlid.
+- Missatge d'error quan el text té menys de 3 caràcters.
+- Botó "Restablir filtres" per recuperar els 10 videojocs.
+- Distribució responsive del formulari amb CSS Grid.
+
+### Fitxers principals
+
+- src/app/components/filtres-videojocs/filtres-videojocs.component.ts
+- src/app/components/filtres-videojocs/filtres-videojocs.component.html
+- src/app/components/filtres-videojocs/filtres-videojocs.component.scss
+- src/app/app.component.ts
+- src/app/app.component.html

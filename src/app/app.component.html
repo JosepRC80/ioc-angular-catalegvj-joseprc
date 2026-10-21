@@ -14,12 +14,14 @@
   </aside>
 
   <!-- Component de filtres del catàleg-->
-  <app-filtres-videojocs></app-filtres-videojocs>
+  <app-filtres-videojocs
+    (aplicarFiltres)="rebreFiltres($event)"> // component de filtreS: escoltem l'esdeveniment que envia
+  </app-filtres-videojocs>
 
   <!-- Component de llista: rep els videojocs i comunica la selecció al pare-->
   <div class="jocs">
     <app-llista-videojocs
-      [videojocs]="elements"
+      [videojocs]="elementsFiltrats" // mostra, només, el resultat de la cerca filtrada
       (seleccionarVideojoc)="seleccionarVideojoc($event)">
     </app-llista-videojocs>
   </div>
