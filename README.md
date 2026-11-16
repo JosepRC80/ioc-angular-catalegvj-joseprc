@@ -296,3 +296,224 @@ Les versions s'han comprovat mitjançant la comanda:
 ```bash
 ng version
 ```
+
+
+
+
+
+
+############################## EAC3 - Serveis HTTP, formularis reactius i persistència ###########################################################
+
+## Descripció de l'EAC3
+
+En aquesta activitat s'ha ampliat el catàleg de videojocs
+desenvolupat a l'EAC1 i l'EAC2.
+
+S'ha incorporat una API REST local amb json-server,
+un servei Angular per gestionar peticions HTTP,
+models de dades i un adaptador.
+
+També s'ha convertit el formulari de filtres a un
+formulari reactiu amb validacions i s'ha implementat
+un historial de cerques persistent amb localStorage.
+
+## Versions utilitzades
+
+- Angular: 22.2.0
+- Angular CLI: 22.2.0
+- Node.js: 24.21.0
+- npm: 11.19.0
+- TypeScript: 6.0.3
+- Sistema operatiu: Windows x64
+- json-server: dependència de desenvolupament del projecte
+
+Les versions de l'entorn es poden consultar amb:
+
+```bash
+ng version
+```
+
+## Branca de desenvolupament
+
+L'EAC3 s'ha desenvolupat a la branca:
+
+`ra3-serveis`
+
+Repositori:
+
+https://github.com/JosepRC80/ioc-angular-catalegvj-joseprc
+
+## Instal·lació i execució
+
+Instal·lar les dependències:
+
+```bash
+npm install
+```
+
+Iniciar l'API REST local en un primer terminal:
+
+```bash
+npm run api
+```
+
+Iniciar Angular en un segon terminal:
+
+```bash
+npm start
+```
+
+Adreça de l'aplicació:
+
+http://localhost:4200
+
+Endpoint de l'API:
+
+http://localhost:4301/videojocs
+
+## API REST
+
+L'API local utilitza json-server i les dades del fitxer:
+
+`tools/api/videojocs.json`
+
+El fitxer `src/environments/environment.ts`
+centralitza l'adreça base de l'API.
+
+Operacions implementades:
+
+- GET /videojocs: recupera els videojocs.
+- POST /videojocs: permet crear videojocs nous.
+
+## Models i adaptador
+
+S'utilitzen dos models:
+
+- `VideojocApi`: representa les dades de l'API.
+- `Element`: representa les dades internes del catàleg.
+
+L'adaptador `adaptarVideojoc()` transforma les dades
+rebudes de l'API abans d'utilitzar-les a l'aplicació.
+
+Entre les normalitzacions implementades hi ha:
+
+- Eliminació d'espais als extrems dels títols.
+- Eliminació d'espais als extrems de les descripcions.
+- Conversió de categories a minúscules.
+- Conversió de plataformes a minúscules.
+- Conservació dels identificadors com a string.
+
+Fitxer de l'adaptador:
+
+`src/app/adaptadors/videojoc.adaptador.ts`
+
+## Servei HTTP
+
+El servei `Videojocs` està definit a:
+
+`src/app/services/videojocs.service.ts`
+
+Utilitza HttpClient per comunicar-se amb l'API.
+
+Mètodes principals:
+
+- `obtenirVideojocs()`: consulta i adapta el catàleg.
+- `crearVideojoc()`: envia un videojoc nou mitjançant POST.
+- `comprovarResultats()`: comprova si una cerca té coincidències.
+
+El component principal gestiona les consultes amb RxJS,
+utilitzant `Subject`, `switchMap` i `catchError`.
+
+Es mostren estats de càrrega i error mitjançant signals.
+
+Quan l'API no respon, apareix un banner d'error
+amb un botó per reintentar la consulta.
+
+## Formulari reactiu
+
+El formulari de filtres es troba a:
+
+`src/app/components/filtres-videojocs/`
+
+Utilitza ReactiveFormsModule, FormGroup i FormControl.
+
+Funcionalitats implementades:
+
+- Cerca de videojocs per títol.
+- Filtratge per categoria.
+- Validació síncrona amb Validators.minLength(3).
+- Validació asíncrona consultant l'API.
+- Espera de 400 ms abans de la consulta asíncrona.
+- Missatges de validació i errors.
+- Botó per restablir els filtres.
+- Comunicació amb el component pare mitjançant @Output.
+
+## Historial de cerques
+
+S'ha implementat un historial persistent amb localStorage.
+
+La clau utilitzada és:
+
+`historialCerquesVideojocs`
+
+Funcionalitats:
+
+- Conserva les cinc darreres cerques vàlides.
+- Evita duplicats del mateix text i categoria.
+- Permet recuperar cerques anteriors.
+- Manté les cerques després de recarregar la pàgina.
+- Gestiona possibles errors amb try/catch.
+
+## Accessibilitat i disseny responsive
+
+L'aplicació utilitza:
+
+- Etiquetes label associades als camps del formulari.
+- role="status" per als missatges informatius.
+- role="alert" per als missatges d'error.
+- aria-live="polite" quan correspon.
+- @if, @else i @for amb track per al control de flux.
+- CSS responsive per adaptar la interfície a mòbils.
+
+## Comprovacions del projecte
+
+Compilar l'aplicació:
+
+```bash
+npm run build
+```
+
+Executar les proves automatitzades:
+
+```bash
+npm test
+```
+
+Comprovar l'estat del repositori:
+
+```bash
+git status
+```
+
+Consultar els darrers commits:
+
+```bash
+git log --oneline --decorate --max-count=5
+```
+
+## Documentació tècnica
+
+La documentació de l'EAC3 es troba a:
+
+- `docs/models.md`: models i mapatge de les dades.
+- `docs/serveis.md`: servei HTTP, estats i reintent.
+- `docs/formularis.md`: formulari reactiu, validacions i historial.
+
+## Reproducció de l'aplicació
+
+Per revisar el projecte cal instal·lar les dependències
+amb npm install i mantenir en execució tant l'API local
+com el servidor Angular.
+
+L'API ha d'estar disponible al port 4301 abans de
+comprovar les consultes del catàleg i els formularis.

@@ -1,7 +1,6 @@
 <!-- enllaç d'accessibilitat per saltar directament al contingut principal -->
 <a href="#contingut-principal" class="enllac-salt">Salta al contingut principal</a>
 
-
 <!-- contingut principal de l'aplicació-->
 <main class="container" id="contingut-principal" tabindex="-1">
   <h1>{{ nomAplicacio }}</h1>
@@ -23,6 +22,33 @@
     (aplicarFiltres)="rebreFiltres($event)"> // component de filtreS: escoltem l'esdeveniment que envia
   </app-filtres-videojocs>
 
+  <!-- Estat de càrrega -->
+  @if (carregant()) {
+    <p role="status" aria-live="polite">Carregant videojocs...</p>
+  }
+
+  <!-- Banner d'error de connexió amb l'API-->
+  @if (missatgeError()) {
+    <div class="banner-error" role="alert">
+      <p>{{ missatgeError() }}</p>
+
+      <button type="button" (click)="reintentarCarrega()">
+        Torna-ho a intentar
+      </button>
+    </div>
+  }
+
+  <!-- Botó temporal per comprovar el POST!!-->
+  <!-- <button type="button" (click)="provarPost()">Provar POST Angular</button>  -->
+
+  <!-- Component de llista -->
+  <div class="jocs">
+    <app-llista-videojocs
+      [videojocs]="elementsFiltrats"
+      (seleccionarVideojoc)="seleccionarVideojoc($event)">
+    </app-llista-videojocs>
+  </div>
+
   <!-- Component de llista: rep els videojocs i comunica la selecció al pare-->
   <div class="jocs">
     <app-llista-videojocs
@@ -30,7 +56,6 @@
       (seleccionarVideojoc)="seleccionarVideojoc($event)">
     </app-llista-videojocs>
   </div>
-
 
   <!-- panell de detall del videojoc seleccionat -->
   <section class="detall-videojoc" aria-labelledby="titol-detall">
@@ -41,15 +66,10 @@
     @if (videojocSeleccionat) {
 
       <h3>{{ videojocSeleccionat.titol }}</h3>
-
       <p>Descripcio: {{ videojocSeleccionat.descripcio }}</p>
-
       <p>Categoria: {{ videojocSeleccionat.categoria }}</p>
-
       <p>Plataforma: {{ videojocSeleccionat.plataforma }}</p>
-
       <p>Data de llançament: {{ videojocSeleccionat.dataLlancament | date: 'dd/MM/yyyy' }}</p>
-
       <p>Valoració: {{ videojocSeleccionat.valoracio }}</p>
 
     } @else {
@@ -57,6 +77,4 @@
       <p>Selecciona un videojoc del catàleg per consultar-ne els detalls.</p>
     }
   </section>
-
-  
 </main>

@@ -51,3 +51,35 @@ aside {
         outline-offset: 3px; // Separem el contorn de l'element
     }
 }
+
+
+/* Banner d'error quan l'API no respon */
+.banner-error {
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid #b42318;
+    border-radius: 6px;
+    background-color: #fff1f0;
+    color: #912018;
+
+    p {
+        margin: 0 0 0.75rem;
+    }
+
+    button {
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        max-width: 100%;
+    }
+}
+
+/* Adaptació del banner a pantalles petites */
+@media (max-width: 600px) {
+    .banner-error {
+        padding: 0.75rem;
+
+    button {
+        width: 100%;
+    }
+    }
+}

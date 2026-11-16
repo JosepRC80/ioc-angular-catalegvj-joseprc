@@ -28,7 +28,7 @@ import { Element } from '../models/element.model'; /* importem la interfície qu
 export const ELEMENTS_MOCK: Element[] = [ /*declaro una constant que podré utilitzar des d'altres fitxers. Element[] indica que és un array
     i { ... } representa un objecte amb les propietats definides a la interfície */
     {
-        id: 1,
+        id: "1",
         titol: 'Super Mario Bros',
         descripcio: 'Joc de plataformes on Mario ha de rescatar a la princesa Peach.',
         categoria: 'Plataformes',
@@ -39,7 +39,7 @@ export const ELEMENTS_MOCK: Element[] = [ /*declaro una constant que podré util
     },
 
     {
-        id: 2,
+        id: "2",
         titol: 'Super Mario World',
         descripcio: 'Joc de plataformes on Mario explora Dinosaur Land amb Yoshi.',
         categoria: 'Plataformes',
@@ -50,7 +50,7 @@ export const ELEMENTS_MOCK: Element[] = [ /*declaro una constant que podré util
     },
 
     {
-        id: 3,
+        id: "3",
         titol: 'Tetris',
         descripcio: 'Joc de puzles que consisteix a encaixar peces per completar línies.',
         categoria: 'Puzles',
@@ -61,7 +61,7 @@ export const ELEMENTS_MOCK: Element[] = [ /*declaro una constant que podré util
     },
 
     {
-        id: 4,
+        id: "4",
         titol: 'Sonic the Hedgehog',
         descripcio: 'Joc de plataformes protagonitzat per un eriçó blau que ha de derrotar el Dr. Robotnik.',
         categoria: 'Plataformes',
@@ -72,7 +72,7 @@ export const ELEMENTS_MOCK: Element[] = [ /*declaro una constant que podré util
     },
 
     {
-        id: 5,
+        id: "5",
         titol: 'Alex Kidd in Miracle World',
         descripcio: 'Joc de plataformes on Alex Kidd recorre diversos escenaris i s’enfronta a enemics amb els seus punys.',
         categoria: 'Plataformes',
@@ -83,7 +83,7 @@ export const ELEMENTS_MOCK: Element[] = [ /*declaro una constant que podré util
     },
 
     {
-        id: 6,
+        id: "6",
         titol: 'The Legend of Zelda: Breath of the Wild',
         descripcio: 'Joc d’aventures i exploració en un món obert on Link ha de salvar el regne de Hyrule.',
         categoria: 'Aventura',
@@ -94,7 +94,7 @@ export const ELEMENTS_MOCK: Element[] = [ /*declaro una constant que podré util
     },
 
     {
-        id: 7,
+        id: "7",
         titol: 'Mario Kart World',
         descripcio: 'Joc de curses amb personatges de Nintendo, circuits connectats i exploració lliure.',
         categoria: 'Curses',
@@ -105,7 +105,7 @@ export const ELEMENTS_MOCK: Element[] = [ /*declaro una constant que podré util
     },
 
     {
-        id: 8,
+        id: "8",
         titol: 'The Secret of Monkey Island',
         descripcio: 'Aventura gràfica protagonitzada per Guybrush Threepwood, un jove que somia convertir-se en pirata.',
         categoria: 'Aventura gràfica',
@@ -116,7 +116,7 @@ export const ELEMENTS_MOCK: Element[] = [ /*declaro una constant que podré util
     },
 
     {
-        id: 9,
+        id: "9",
         titol: 'Saboteur II: Avenging Angel',
         descripcio: 'Joc d’acció i infiltració protagonitzat per una ninja que ha de completar una missió en una base enemiga.',
         categoria: 'Acció',
@@ -127,7 +127,7 @@ export const ELEMENTS_MOCK: Element[] = [ /*declaro una constant que podré util
     },
 
     {
-        id: 10,
+        id: "10",
         titol: 'The Legend of Zelda: A Link to the Past',
         descripcio: 'Joc d’aventures on Link explora Hyrule i el Món Fosc per rescatar la princesa Zelda.',
         categoria: 'Aventura',

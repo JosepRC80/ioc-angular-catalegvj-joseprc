@@ -1,4 +1,4 @@
-/**
+/** EAC2
  * Model de dades que defineix l'estructura dels elements del catàleg.
  * La interfície estableix les propietats i els tipus de dades
  * que ha de tenir cada element de l'aplicació.
@@ -7,7 +7,7 @@
  */
 
 export interface Element {
-    id: number,
+    id: string,
     titol: string;
     descripcio: string;
     categoria: string;

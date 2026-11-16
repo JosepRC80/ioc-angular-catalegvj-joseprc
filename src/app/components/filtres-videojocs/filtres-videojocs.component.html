@@ -1,6 +1,6 @@
 
 <!-- Formulari per cercar i filtrar els videojocs -->
-<form class="formulari-filtres">
+<form class="formulari-filtres" [formGroup]="formulariCerca">
 
     <!-- Grup de cerca: etiqueta, camp i validació -->
     <div class="grup-cerca">
@@ -11,20 +11,39 @@
             type="text"
             id="textCerca"
             name="textCerca"
-            [(ngModel)]="textCerca"
+            formControlName="text"
             placeholder="Escriu el nom d'un videojoc"
             required
             minlength="3"
-            #campCerca="ngModel">
+            >
 
-        <!-- Reservem espai per al missatge de validació -->
-        <div class="espai-error">
-            @if (campCerca.errors?.['minlength'] && campCerca.dirty) {
-                <p class="missatge-error" role="alert">
-                    El text de cerca ha de tenir un mínim de 3 caràcters.
-                </p>
-            }
-        </div>
+        <!-- Validació síncrona: longitud mínima -->
+        @if (formulariCerca.controls.text.hasError('minlength') && formulariCerca.controls.text.dirty) {
+            <p class="missatge-error" role="alert">
+                El text de cerca ha de tenir un mínim de 3 caràcters.
+            </p>
+        }
+
+        <!-- Validació asíncrona en curs -->
+        @if (formulariCerca.controls.text.pending) {
+            <p role="status" aria-live="polite">
+                Comprovant si hi ha videojocs...
+            </p>
+        }
+
+        <!-- Validació asíncrona: cap resultat -->
+        @if (formulariCerca.controls.text.hasError('senseResultats') && formulariCerca.controls.text.dirty) {
+            <p class="missatge-error" role="alert">
+                No s'hi han trobat videojocs amb aquest terme.
+            </p>
+        }
+
+        <!-- Error en consultar l'API -->
+        @if (formulariCerca.controls.text.hasError('errorApi') && formulariCerca.controls.text.dirty) {
+            <p class="missatge-error" role="alert">
+                No s'ha pogut validar la cerca. Comprova la connexió amb l'API.
+            </p>
+        }
 
     </div>
 
@@ -36,13 +55,11 @@
         <select
             id="categoria"
             name="categoria"
-            [(ngModel)]="categoriaSeleccionada">
-
+            formControlName="categoria">
             <option value="">Totes les categories</option>
             <option value="Plataformes">Plataformes</option>
             <option value="Aventura">Aventura</option>
             <option value="Puzles">Puzles</option>
-
         </select>
 
     </div>
@@ -52,7 +69,7 @@
         type="button"
         class="boto-aplicar"
         (click)="enviarFiltres()"
-        [disabled]="campCerca.invalid">
+        [disabled]="formulariCerca.invalid || formulariCerca.pending">
         Aplicar filtres
     </button>
 
@@ -65,3 +82,26 @@
     </button>
 
 </form>
+
+<!-- Historial de les darreres cerques vàlides -->
+@if (historialCerques.length > 0) {
+    <section class="historial-cerques" aria-label="Historial de cerques">
+
+        <h3>Últimes cerques</h3>
+
+        <ul>
+            @for (cerca of historialCerques; track $index) {
+                <li>
+                    <button type="button"
+                            (click)="recuperarCerca(cerca)">
+                        {{ cerca.text }}
+                        @if (cerca.categoria) {
+                            — {{ cerca.categoria }}
+                        }
+                    </button>
+                </li>
+            }
+        </ul>
+
+    </section>
+}
